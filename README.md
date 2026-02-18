@@ -1,88 +1,112 @@
-# lifeguard-saves-analysis
-SQL and NumPy analysis of lifeguard rescue data with multiple linear regression modeling
+# Lifeguard Rescue Data Analysis
 
-Lifeguard Rescue Risk Analysis (SQL + NumPy)
-Project Overview:
+SQL + NumPy analysis of real lifeguard rescue data using a simplified linear regression model.
 
-During Summer 2025 (June – September), I worked as a lifeguard at Calibunga Water Park.
+---
 
-While working there, I monitored swimmers across all attractions, enforced safety rules, and performed both shallow and deep-water rescues when necessary. I also became CPR certified and worked closely with my team to maintain a safe environment for guests.
+## Background
 
-The dataset used in this project was compiled from official rescue report sheets recorded during shifts. These reports documented:
+During Summer 2025 (June–September), I worked as a lifeguard at Calibunga Water Park.  
+All rescues were recorded on official shift reports, including:
 
-Number of saves
-Time of day
-Location of rescue (specific slide or attraction)
+- Number of saves  
+- Time of day  
+- Location of rescue  
 
-This project is based on real operational data collected during my time working at the park.
+This project analyzes that real operational data to identify safety patterns and key drivers of rescues.
 
+---
 
+## Project Goals
 
-In this project, I analyzed lifeguard rescue activity from a water park using SQL and Python.
+- Identify which attractions generate the most rescues  
+- Determine when rescues occur most frequently  
+- Build a simplified regression model to measure risk factors  
 
-The main objectives were:
-Determine which attractions generate the most rescues
-Identify when rescues occur most frequently. Build a simplified regression model to measure key risk drivers. The focus was on converting raw operational data into clear, interpretable safety insights.
+The objective was to turn raw safety logs into clear, interpretable insights.
 
-Tools & Skills Used:
-SQL aggregation (GROUP BY, SUM, AVG)
-Running SQL inside Python (SQLite)
-Linear regression built from scratch using NumPy
-Data visualization with Matplotlib
-Model evaluation using MSE and R²
-Total Rescues by Location
-I first used SQL to compute total rescues by attraction.
+---
+
+## Tools Used
+
+- SQL (GROUP BY, SUM, AVG)  
+- SQLite inside Python  
+- Linear regression built from scratch using NumPy  
+- Matplotlib for visualization  
+- Model evaluation using MSE and R²  
+
+---
+
+## Rescue Distribution by Location
+
+Shotgun Falls accounts for the highest number of rescues, showing that rescue activity is concentrated in specific high-risk attractions.
 
 <img src="images/Total_Saves_by_Location.png" width="700">
-Observations:
-Shotgun Falls accounts for the highest number of rescues. Rescue activity is not evenly distributed across attractions. Certain areas clearly present higher safety risk.
 
-Average Rescues by Time of Day:
-Next, I analyzed rescue frequency across different time blocks.
+Additional breakdown of rescue distribution:
+
+<img src="images/Total_Saves_by_Location2.png" width="700">
+
+---
+
+## Average Rescues by Time of Day
+
+Rescue frequency peaks in the afternoon and is lower in the morning, suggesting risk increases as the day progresses.
 
 <img src="images/Avg_Saves_By_Time_Of_Day.png" width="700">
-Observations
-Rescue frequency peaks in the afternoon. Morning periods show noticeably lower activity. Risk appears to rise as the day progresses.
 
-Simplified Regression Model:
+---
 
-I constructed a focused Multiple Linear Regression model using:
+## Simplified Regression Model
 
-Temperature
-Lifeguards_On_Duty
-High_Risk_Location
-Peak_Time
+Features used:
+
+- Temperature  
+- Lifeguards_On_Duty  
+- High_Risk_Location  
+- Peak_Time  
+
 Estimated model:
 
-Saves = -0.50
-(0.0067 × Temperature)
-(0.0091 × Lifeguards_On_Duty)
-(0.6673 × High_Risk_Location)
-(0.2982 × Peak_Time)
+Saves = -0.50  
++ (0.0067 × Temperature)  
++ (0.0091 × Lifeguards_On_Duty)  
++ (0.6673 × High_Risk_Location)  
++ (0.2982 × Peak_Time)
 
-What the Model Suggests:
+### Interpretation
 
-High-risk locations have the strongest effect on rescue frequency. Peak hours meaningfully increase expected rescues. Temperature has a small positive impact Lifeguard count's don't affect the amount of saves. 
+- High-risk locations have the strongest effect on rescue frequency.  
+- Peak hours meaningfully increase expected rescues.  
+- Temperature has a small positive impact.  
+- Staffing levels show minimal influence in this simplified model.
 
-Model Performance
-MSE ≈ 0.45
-R² ≈ 0.19
+---
 
-The model explains about 19% of the variation in rescue counts.
+## Model Performance
 
-This indicates that while environmental and operational conditions influence rescues, many events are still driven by unpredictable factors.
+- MSE ≈ 0.45  
+- R² ≈ 0.19  
 
-Model Fit Visualization
+The model explains about 19% of variation in rescue counts, indicating that many rescues are influenced by unpredictable behavioral or environmental factors.
+
+---
+
+## Model Fit Visualization
+
+The plot below compares actual saves to predicted saves from the regression model.
+
 <img src="images/Actual_vs_Predicted_Saves.png" width="700">
 
-The spread around the diagonal line reflects the moderate explanatory power of the model.
+---
 
-Why This Matters:
+## Key Takeaway
 
 This project demonstrates the ability to:
-Extract operational insights using SQL
-Build regression models without machine learning libraries
-Simplify models for clarity and interpretability
-Translate statistical output into practical risk insights
 
-Overall, the analysis highlights how high-risk zones being like Shotgun Falls and peak hours are the primary contributors to how many saves happen. 
+- Extract operational insights using SQL  
+- Build regression models without machine learning libraries  
+- Interpret statistical output clearly  
+- Translate data into practical safety insights  
+
+Overall, high-risk attractions and peak hours are the primary contributors to rescue frequency.
