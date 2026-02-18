@@ -9,7 +9,7 @@ SQL + NumPy analysis of real lifeguard rescue data using a simplified linear reg
 During Summer 2025 (June–September), I worked as a lifeguard at Calibunga Water Park.  
 All rescues were recorded on official shift reports, including:
 
-- Number of saves  
+- Number of saves (Definition of a “Save”: A save is defined as a lifeguard aiding a guest who is clearly struggling to stay afloat and are visibly distressed but   don't include life-threatening rescues.
 - Time of day  
 - Location of rescue  
 
